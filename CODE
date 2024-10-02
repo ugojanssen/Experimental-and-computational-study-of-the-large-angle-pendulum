@@ -1,0 +1,27 @@
+import math
+
+L = 0.485 #Length of pendulum in meters
+g = 9.81 #Gravity constant
+Theta0 = math.pi / 2 #Initial angle of the pendulum
+Nstep = 100 #Step size for algorithm
+DelT = math.pi * 2 * math.sqrt(L / g) / 4 / Nstep #Reasonable estimate for Delta Time using the period of the small angle pendulum
+
+DelOmega = 0 #Delta Omega, the incremental increase in velocity over time Delta T
+
+Theta = Theta0
+Omega = 0 #Total angular velocity
+T = 0 #Time period
+
+for i in range(1,2 * Nstep):
+  T = T + DelT
+  DelOmega = -g / L * math.sin(Theta) * DelT
+  Omega = Omega + DelOmega
+  Theta = Theta + Omega * DelT
+  if Theta <= 0:
+    break
+
+T_small_angle: = math.pi * 2 * sqrt(L / g)
+T_energy_derivation = 4 * T
+print(f'Using small angle approximation, period T is {round(T_small_angle, 3)}'
+  )
+print(f'Using the derivation based on energy conservation, period T is {round(T_energy_derivation, 3)}')
