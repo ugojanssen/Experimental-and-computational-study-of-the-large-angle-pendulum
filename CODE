@@ -25,3 +25,38 @@ T_energy_derivation = 4 * T
 print(f'Using small angle approximation, period T is {round(T_small_angle, 3)}'
   )
 print(f'Using the derivation based on energy conservation, period T is {round(T_energy_derivation, 3)}')
+
+#EXPLANATION OF CODE#
+
+Purpose of the Simulation: The simulation aims to model the motion of a pendulum swinging from a starting angle theta_0 to a vertical position 
+where theta equals zero. This corresponds to analyzing the pendulum's behavior under the influence of gravity without approximating for small angles.
+
+Time Interval: The simulation uses a defined time interval, delta t, equal to T divided by 4, where T is the period of the pendulum’s oscillation. 
+This approach allows the algorithm to effectively divide the total time into smaller segments for numerical calculations.
+
+Angular Velocity Definition: The angular velocity, omega, is defined as the rate of change of the angle theta with respect to time. 
+This concept is critical as it relates the angular position of the pendulum to its motion over time.
+
+Equation of Motion: The equation governing the pendulum’s motion describes how the angular acceleration of the pendulum relates to 
+the sine of the angle and the gravitational constant g, normalized by the pendulum length L.
+
+Discretizing the Equation: The continuous equation is transformed into a discrete version for computational purposes. 
+The change in angular velocity, delta omega, over the time interval delta t can be expressed in a way that allows the program to compute how 
+the angular velocity changes over each small time step.
+
+Assumption of Constant Angular Velocity: During a small time interval delta t, the angular velocity is assumed to be constant. This simplification 
+makes calculations easier and allows for effective integration over time.
+
+Step-by-Step Updates: The algorithm updates the angle theta at each time step. Initially, the angle is adjusted based on the change in angular 
+velocity. The new angular velocity is then calculated based on the updated angle. This process is repeated in a loop, continuously updating the angle 
+and angular velocity for each time step until a specified condition is met.
+
+Stopping Condition: The simulation continues until a certain number of steps N is reached, at which point the pendulum is expected to be at the 
+vertical position where theta equals zero. This condition halts the simulation and allows for the collection of data related to the period of 
+oscillation.
+
+Programming Structure: The algorithm is designed to be efficient and concise, utilizing the capabilities of programming languages like Python. 
+By updating and overwriting variables in a loop, the algorithm minimizes the amount of data it needs to track at any given time.
+
+Result Interpretation: The final output of the simulation provides the period of the pendulum based on the starting angle. This result can then 
+be compared to theoretical predictions and experimental data to validate the accuracy of the simulation.
